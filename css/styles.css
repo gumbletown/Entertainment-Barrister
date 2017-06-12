@@ -1,0 +1,729 @@
+@charset "UTF-8";
+
+
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    font-weight: normal;
+    color: inherit;
+    line-height: normal;
+    text-decoration: none;
+}
+
+img {display: block;}
+
+button, input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+/* Reset */
+
+
+/* 00. GLOBAL */
+html,
+body {
+	width: 100%;
+	height: 100%;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    overflow: hidden;
+	background: #7cdbd5;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    color: #000;
+}
+
+#global {
+    width: 100%;
+    height: 200%;
+    position: relative;
+    top: 0;
+    opacity: 0;
+    will-change: opacity, top;
+    transition: top 750ms cubic-bezier(0.77,0,0.175,1);
+    -o-transition: top 750ms cubic-bezier(0.77,0,0.175,1);
+    -ms-transition: top 750ms cubic-bezier(0.77,0,0.175,1);
+    -moz-transition: top 750ms cubic-bezier(0.77,0,0.175,1);
+    -webkit-transition: top 750ms cubic-bezier(0.77,0,0.175,1);
+}
+
+
+
+#about,
+#works {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    opacity: 1;
+    will-change: opacity;
+    transition: opacity 750ms cubic-bezier(0.77,0,0.175,1);
+    -o-transition: opacity 750ms cubic-bezier(0.77,0,0.175,1);
+    -ms-transition: opacity 750ms cubic-bezier(0.77,0,0.175,1);
+    -moz-transition: opacity 750ms cubic-bezier(0.77,0,0.175,1);
+    -webkit-transition: opacity 750ms cubic-bezier(0.77,0,0.175,1);
+}
+
+#works {
+    opacity: 0;
+}
+
+
+
+header {
+    position: fixed;
+    z-index: 99;
+    top: 40px;
+    left: 40px;
+}
+
+#logo {
+    width: 27px;
+    height: 28px;
+    display: block;
+}
+
+#logo path {
+    fill: #000;
+}
+
+#menuBtn,
+header span,
+#menu {
+    display: none;
+}
+
+
+
+#social {
+    position: fixed;
+    z-index: 97;
+    bottom: 36px;
+    right: 60px;
+}
+
+#social p {
+    font-size: 14px;
+    color: rgba(0,0,0,0.5);
+}
+
+#social a {
+    transition: 125ms;
+    -o-transition: 125ms;
+    -ms-transition: 125ms;
+    -moz-transition: 125ms;
+    -webkit-transition: 125ms;
+}
+
+#social p a:first-child {
+    margin-left: 1px;
+}
+
+#social a:hover {
+    color: rgba(0,0,0,0.75);
+}
+
+footer {
+    position: fixed;
+    z-index: 97;
+    bottom: 36px;
+    left: 40px;
+    cursor: default;
+}
+
+footer p {
+    font-size: 10px;
+    color: rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btnShort {
+    width: 60px;
+    height: 33px;
+    position: relative;
+}
+
+.btnLarge {
+    width: 80px;
+    height: 33px;
+    position: relative;
+}
+
+.btnShort a,
+.btnShort input,
+.btnShort button,
+.btnLarge a,
+.btnLarge input,
+.btnLarge button {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: #7cdbd5;
+    display: block;
+    cursor: pointer;
+    font: 10px 'Calibri';
+    line-height: 30px;
+    text-align: center;
+}
+
+.btnShort::before,
+.btnLarge::before {
+    content: '';
+    width: 100%;
+    height: 18px;
+    border-radius: 0 0 15px 15px;
+    border: 1px solid #000;
+    border-top: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: #FFF;
+    position: absolute;
+    bottom: 0;
+    display: block;
+}
+
+.btnShort:active a,
+.btnShort:active input,
+.btnShort:active button,
+.btnLarge:active a,
+.btnLarge:active input,
+.btnLarge:active button {
+    top: 3px;
+    background: #ff6a5c;
+}
+
+.btnShort:active::before,
+.btnLarge:active::before {
+    display: none;
+}
+
+.btnLarge.disabled {
+    pointer-events: none;
+}
+
+.btnLarge.disabled::before {
+    display: none;
+}
+
+.btnLarge.disabled button {
+    top: 3px;
+    background: #b2b2b2 url(../img/btn-disabled.svg) center no-repeat;
+    background-size: cover;
+    color: rgba(0,0,0,0.75);
+}
+/* Buttons */
+
+::-moz-selection {background: #000; color: #FFF;}
+::selection      {background: #000; color: #FFF;}
+/* 00. GLOBAL */
+
+
+/* 01. LOADER */
+#loader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background: #7cdbd5;
+}
+
+#loader .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -24px 0 0 -40px;
+}
+
+#loader p {
+    margin-bottom: 25px;
+    font-size: 13px;
+    text-align: center;
+}
+
+#loadBar {
+    width: 80px;
+    height: 4px;
+    position: relative;
+    cursor: default;
+}
+
+#loadBar > div {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.1);
+    background: linear-gradient(to left,rgba(0,0,0,0.2),rgba(0,0,0,0.1) 15%,rgba(0,0,0,0.1) 85%,rgba(0,0,0,0.2));
+    background: -o-linear-gradient(to left,rgba(0,0,0,0.2),rgba(0,0,0,0.1) 15%,rgba(0,0,0,0.1) 85%,rgba(0,0,0,0.2));
+    background: -moz-linear-gradient(to left,rgba(0,0,0,0.2),rgba(0,0,0,0.1) 15%,rgba(0,0,0,0.1) 85%,rgba(0,0,0,0.2));
+    background: -webkit-linear-gradient(to left,rgba(0,0,0,0.2),rgba(0,0,0,0.1) 15%,rgba(0,0,0,0.1) 85%,rgba(0,0,0,0.2));
+}
+
+#loadBar .fill {
+    width: 0;
+    height: 100%;
+    float: left;
+    background: #FFF;
+}
+
+#loadBar span {
+    width: 17px;
+    height: 9px;
+    position: absolute;
+    top: 21px;
+    left: 0;
+    margin-left: -8px;
+    display: block;
+    font-size: 11px;
+    color: rgba(0,0,0,0.5);
+    line-height: 11px;
+    text-align: center;
+}
+
+#loadBar span::before {
+    content: '';
+    width: 1px;
+    height: 14px;
+    position: absolute;
+    top: -21px;
+    left: 8px;
+    background: #FFF;
+    display: block;
+}
+/* 01. LOADER */
+
+
+/* 02. ABOUT */
+#about .col {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#about .col.left img {
+    margin-top: 270px;
+    margin-left: 100px;
+}
+
+#about .col.right .wrapper {
+    width: 75%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    margin-top: 77px;
+}
+
+#about .col.right .wrapper h1 {
+    font-weight: bold;
+}
+
+#about .col.right .wrapper h2 {
+    margin-bottom: 10px;
+}
+
+
+#about .col.right .wrapper > p {
+    width: 100%;
+    position: relative;
+    margin-bottom: 21px;
+    display: block;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+#about .col.right .wrapper > p b {
+    font-family: 'Calibri-Bold';
+}
+
+#about .col.right .wrapper > p::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    position: absolute;
+    top: 16px;
+    left: -30px;
+    background: #000;
+    display: block;
+}
+
+#about .col.right .wrapper > div {
+    height: 25px;
+    margin-bottom: 40px;
+}
+
+#about .col.right .wrapper > div p {
+    height: 25px;
+    float: left;
+    padding-top: 6px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
+    font-size: 15px;
+}
+
+#about .col.right .wrapper > div a {
+    position: relative;
+    display: inline-block;
+}
+
+#about .col.right .wrapper > div a::before {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #000;
+    display: block;
+    transition: 250ms;
+    -o-transition: 250ms;
+    -ms-transition: 250ms;
+    -moz-transition: 250ms;
+    -webkit-transition: 250ms;
+}
+
+#about .col.right .wrapper > div a:hover::before {
+    width: 100%;
+}
+
+#about .col.right > p {
+    position: absolute;
+    bottom: 35px;
+    left: 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#about .col.right > p span {
+    text-decoration: line-through;
+}
+
+#arrowDown {
+    width: 1px;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    background: #fff;
+    display: block;
+}
+
+#projects .btnLarge {
+    opacity: 0;
+    transform: translateY(10px);
+    -o-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transition: 375ms ease-out;
+    -o-transition: 375ms ease-out;
+    -ms-transition: 375ms ease-out;
+    -moz-transition: 375ms ease-out;
+    -webkit-transition: 375ms ease-out;
+}
+
+#projects .btnLarge {
+    margin: 0 auto;
+    transition-delay: 250ms;
+    -o-transition-delay: 250ms;
+    -ms-transition-delay: 250ms;
+    -moz-transition-delay: 250ms;
+    -webkit-transition-delay: 250ms;
+}
+
+#projects .active .btnLarge {
+    opacity: 1;
+    transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+}
+#btn-boring {
+    display: flex;
+    flex-direction: row;
+
+}
+#boring {
+    padding-left: 15px;
+
+
+}
+
+/* RESPONSIVE */
+
+
+@media screen and (max-width:1080px) and (min-width: 980px){
+
+#about .col.left img {
+    margin-top: 170px;
+    margin-left: 20px;
+    width: 300px;
+}
+    
+}
+@media screen and (max-width:980px) and (min-width: 768px){
+
+    #about .col.left img {
+    margin-top: 120px;
+    margin-left: 5px;
+    width: 300px;
+}
+    
+    
+}
+@media screen and (max-width: 768px){
+    
+}
+
+
+
+
+
+/* iPhone 7 Plus (Landscape) */
+@media only screen and (max-width: 736px) {
+
+/* Global */
+html,
+body {
+    height: auto;
+}
+
+body {
+    overflow: auto;
+    padding: 59px 20px 16px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#global {
+    height: auto;
+    position: static;
+}
+
+#about,
+#works {
+    height: auto;
+    position: static;
+}
+
+#works {
+    opacity: 1;
+}
+
+header {
+    width: 100%;
+    height: 58px;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: ##7CDBD5;
+}
+
+header span {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
+}
+
+header span::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.15);
+    display: block;
+}
+
+#logo {
+    float: left;
+    margin-top: 15px;
+}
+
+#logo path {
+    transition: 500ms;
+    -o-transition: 500ms;
+    -ms-transition: 500ms;
+    -moz-transition: 500ms;
+    -webkit-transition: 500ms;
+}
+
+#about .col.left img {
+    margin-top: 15px;
+    width: 300px;
+    margin-left: 30px;
+}
+
+#social {
+    position: static;
+    margin-bottom: 34px;
+}
+
+#social p {
+    text-align: center;
+}
+
+#social span {
+    margin-bottom: 9px;
+    display: block;
+}
+
+#social p a:first-child {
+    margin: 0;
+}
+
+footer {
+    position: static;
+}
+
+footer p {
+    text-align: center;
+}
+/* Global */
+
+
+/* About */
+#about {
+    padding: 40px 0 31px;
+}
+
+#about .col {
+    width: 100%;
+    height: auto;
+    position: static;
+    float: none;
+}
+
+#title {
+     
+    right: auto;
+    left: 75%;
+}
+
+#btn-boring {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#boring {
+    padding-left: 15px;
+}
+
+#about .col.right .wrapper h1 {
+    text-align: center;
+}
+
+#about .col.right .wrapper h2 {
+    text-align: center;
+}
+
+
+#about .col.right .wrapper {
+    width: 100%;
+    position: static;
+    margin: 0 0 40px 0;
+}
+
+#about .col.right .wrapper > p {
+    
+    text-align: center;
+}
+
+#about .col.right .wrapper > p::before {
+    display: none;
+}
+
+#about .col.right .wrapper > div {
+    margin-bottom: 33px;
+}
+
+#about .col.right .wrapper > div p {
+    font-size: 14px;
+}
+
+
+
+#about .col.right  p {
+    position: static;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#arrowDown {
+    width: 1px;
+    height: 20px;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 0 auto;
+}
+/* About */
+
+
+/* Works */
+#works {
+    padding-bottom: 79px;
+}
+
+#arrowUp,
+#works > p {
+    display: none;
+}
+
+
+
+
+
+/* iPhone 7 Plus (Portrait) */
+@media only screen and (max-width: 414px) {
+
+#title {
+    width: 50%;
+    left: 50%;
+}
+
+#about .col.right .wrapper > p {
+    width: 100%;
+}
+
+#draggable {
+    width: 100%;
+}
+
+}
+/* 05. RESPONSIVE */
