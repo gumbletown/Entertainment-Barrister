@@ -40,9 +40,7 @@ body {
 
 body {
     overflow: hidden;
-	background: rgba(0, 49, 245, 0.8);
-
-    background-blend-mode: multiply;
+	background: #7cdbd5;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
     color: #000;
@@ -91,8 +89,14 @@ header {
     left: 40px;
 }
 
-#sb-logo {
-    width: 120px;
+#logo {
+    width: 27px;
+    height: 28px;
+    display: block;
+}
+
+#logo path {
+    fill: #000;
 }
 
 #menuBtn,
@@ -112,7 +116,7 @@ header span,
 
 #social p {
     font-size: 14px;
-    color: #e9f1fe;
+    color: rgba(0,0,0,0.5);
 }
 
 #social a {
@@ -144,15 +148,24 @@ footer p {
     color: rgba(0,0,0,0.5);
 }
 
-/* Button */
-
-.btnLarge {
-    width: 100px;
+/* Buttons */
+.btnShort {
+    width: 60px;
     height: 33px;
     position: relative;
 }
 
+.btnLarge {
+    width: 80px;
+    height: 33px;
+    position: relative;
+}
+
+.btnShort a,
+.btnShort input,
+.btnShort button,
 .btnLarge a,
+.btnLarge input,
 .btnLarge button {
     width: 100%;
     height: 30px;
@@ -162,15 +175,15 @@ footer p {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    background: #e9f1fe;
+    background: #7cdbd5;
     display: block;
     cursor: pointer;
-    font: 12px 'Calibri';
+    font: 10px 'Calibri';
     line-height: 30px;
     text-align: center;
 }
 
-
+.btnShort::before,
 .btnLarge::before {
     content: '';
     width: 100%;
@@ -181,13 +194,41 @@ footer p {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    background: #bbd5fd;
+    background: #FFF;
     position: absolute;
     bottom: 0;
     display: block;
 }
 
+.btnShort:active a,
+.btnShort:active input,
+.btnShort:active button,
+.btnLarge:active a,
+.btnLarge:active input,
+.btnLarge:active button {
+    top: 3px;
+    background: #ff6a5c;
+}
 
+.btnShort:active::before,
+.btnLarge:active::before {
+    display: none;
+}
+
+.btnLarge.disabled {
+    pointer-events: none;
+}
+
+.btnLarge.disabled::before {
+    display: none;
+}
+
+.btnLarge.disabled button {
+    top: 3px;
+    background: #b2b2b2 url(../img/btn-disabled.svg) center no-repeat;
+    background-size: cover;
+    color: rgba(0,0,0,0.75);
+}
 /* Buttons */
 
 ::-moz-selection {background: #000; color: #FFF;}
@@ -203,7 +244,7 @@ footer p {
     z-index: 999;
     top: 0;
     left: 0;
-    background: rgba(0, 49, 245, 0.8);
+    background: #7cdbd5;
 }
 
 #loader .wrapper {
@@ -284,9 +325,8 @@ footer p {
 }
 
 #about .col.left img {
-    margin-top: 150px;
-    margin-left: 40px;
-    
+    margin-top: 270px;
+    margin-left: 100px;
 }
 
 #about .col.right .wrapper {
@@ -294,23 +334,17 @@ footer p {
     position: absolute;
     top: 10%;
     left: 0;
-    margin-top: 90px;
+    margin-top: 77px;
 }
 
 #about .col.right .wrapper h1 {
     font-weight: bold;
-
 }
 
 #about .col.right .wrapper h2 {
     margin-bottom: 10px;
-
 }
 
-#about .col.right .wrapper h3 {
-    color: #e9f1fe;
-    font-weight: bold;
-}
 
 #about .col.right .wrapper > p {
     width: 100%;
@@ -325,7 +359,16 @@ footer p {
     font-family: 'Calibri-Bold';
 }
 
-
+#about .col.right .wrapper > p::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    position: absolute;
+    top: 16px;
+    left: -30px;
+    background: #000;
+    display: block;
+}
 
 #about .col.right .wrapper > div {
     height: 25px;
@@ -365,7 +408,9 @@ footer p {
     -webkit-transition: 250ms;
 }
 
-
+#about .col.right .wrapper > div a:hover::before {
+    width: 100%;
+}
 
 #about .col.right > p {
     position: absolute;
@@ -437,19 +482,27 @@ footer p {
 
 #about .col.left img {
     margin-top: 170px;
-    margin-left: 90px;
-    width: 380px;
+    margin-left: 20px;
+    width: 300px;
 }
     
 }
-@media screen and (max-width:980px) and (min-width: 737px){
+@media screen and (max-width:980px) and (min-width: 768px){
 
     #about .col.left img {
-    margin-top: 180px;
-    margin-left: 55px;
+    margin-top: 120px;
+    margin-left: 5px;
     width: 300px;
 }
+    
+    
 }
+@media screen and (max-width: 768px){
+    
+}
+
+
+
 
 
 /* iPhone 7 Plus (Landscape) */
@@ -484,28 +537,56 @@ body {
     opacity: 1;
 }
 
-#about .col.left img {
-    margin-top: 10px;
-    margin-left: 20px;
-    
+header {
+    width: 100%;
+    height: 58px;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: ##7CDBD5;
 }
 
-#sb-logo {
-    width: 90px;
+header span {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
 }
 
-#about .col.left img {
-    
-    width: 300px;
-    
+header span::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.15);
+    display: block;
 }
 
-
-#title {
-    margin: 0 auto;
+#logo {
+    float: left;
     margin-top: 15px;
-    width: 50%;
-    left: 50%;
+}
+
+#logo path {
+    transition: 500ms;
+    -o-transition: 500ms;
+    -ms-transition: 500ms;
+    -moz-transition: 500ms;
+    -webkit-transition: 500ms;
+}
+
+#about .col.left img {
+    margin-top: 15px;
+    width: 300px;
+    margin-left: 30px;
 }
 
 #social {
@@ -549,6 +630,7 @@ footer p {
 }
 
 #title {
+     
     right: auto;
     left: 75%;
 }
@@ -570,10 +652,6 @@ footer p {
     text-align: center;
 }
 
-#about .col.right .wrapper h3 {
-    text-align: center;
-    margin-bottom: 10px;
-}
 
 #about .col.right .wrapper {
     width: 100%;
@@ -582,6 +660,7 @@ footer p {
 }
 
 #about .col.right .wrapper > p {
+    
     text-align: center;
 }
 
@@ -613,9 +692,19 @@ footer p {
     left: auto;
     margin: 0 auto;
 }
+/* About */
 
 
+/* Works */
+#works {
+    padding-bottom: 79px;
 }
+
+#arrowUp,
+#works > p {
+    display: none;
+}
+
 
 
 
@@ -623,20 +712,18 @@ footer p {
 /* iPhone 7 Plus (Portrait) */
 @media only screen and (max-width: 414px) {
 
-    #title {
-        margin: 0 auto;
-    }
+#title {
+    width: 50%;
+    left: 50%;
+}
 
-    #about .col.left img {
-        margin-top: 40px;
-        margin: 0 auto;   
-        width: 130%;
-    }
+#about .col.right .wrapper > p {
+    width: 100%;
+}
 
-    #about .col.right .wrapper > p {
-        width: 100%;
-    }
-
+#draggable {
+    width: 100%;
+}
 
 }
 /* 05. RESPONSIVE */
